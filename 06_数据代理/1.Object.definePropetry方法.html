@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object.definepropertyfangfa </title>
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+    
+    
+    <script type="text/javascript">
+
+        let number = 18
+
+        let Person =  {
+            name : '张三',
+            sex : '男',
+            // age : 18
+        }
+
+       Object.defineProperty(Person,'age',{
+
+        // value :'男',
+        // enumerable : true, // 控制属性是否可以枚举, 默认为false
+        // writable:true,   //控制属性是否可以被修改
+        // configurable:true   //控制属性是否可以被删除
+
+        get(){
+            return number
+        },
+
+        set(value){
+            console.log("有人修改了age属性:" +value);
+            number = value
+        }
+       })
+
+    console.log(Object.keys(Person));
+    console.log(Person);
+    </script>
+</body>
+</html>
