@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js" ></script>
+</head>
+<body>
+
+    <!-- 容器 -->
+    <div id="root">
+        <h1>插值语法</h1>
+        <h1>Hello,{{name}}</h1>
+        <hr/>
+        <h1>指令语法</h1>
+        <a v-bind:href="url" x="hello" >点击</a>
+        <a :href="url"  x="hello" >点击</a>
+    </div>
+
+    <script type="text/javascript"> 
+
+        Vue.config.productionTip = false
+
+        // 创建Vue实例
+        new Vue({
+            // el:document.getElementById('root')
+            el:'#root',
+            data: {
+                name:'111',
+                hello:"123",
+                url: "http://www.baidu.com"
+            }
+        })
+
+        
+    </script>
+    
+    
+</body>
+</html>
