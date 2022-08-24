@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的数据代理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <h1>名称:{{name}}</h1>
+        <h1>CODE:{{code}}</h1>
+    </div>
+
+
+    <script>
+
+        Vue.config.productionTip = false
+
+        // 通过
+        const vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                    name: 'shake',
+                    code: 123
+                }
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
