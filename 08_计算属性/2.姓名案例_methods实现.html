@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>姓名案例_差值语法实现</title>
+    <title>姓名案例_method实现</title>
     <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 
@@ -12,7 +12,7 @@
     <div id="root">
         姓:<input type="text" v-model="firstName"></input><br/>
         名:<input type="text" v-model="lastName" ></input><br/>
-        全名: <span>{{firstName + "-" + lastName}}</span>
+        全名: <span>{{fullName()}}</span>
     </div>
 
 
@@ -29,7 +29,12 @@
                     firstName:'张',
                     lastName: '三'
                 }
-            }
+            },
+            methods: {
+                fullName(){
+                    return this.firstName.slice(0,3) + '-' + this.lastName;
+                }
+            },
         })
     </script>
 

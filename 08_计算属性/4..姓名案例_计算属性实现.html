@@ -3,16 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>姓名案例_差值语法实现</title>
+    <title>姓名案例_计算属性实现</title>
     <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 
 <body>
 
+
     <div id="root">
         姓:<input type="text" v-model="firstName"></input><br/>
         名:<input type="text" v-model="lastName" ></input><br/>
-        全名: <span>{{firstName + "-" + lastName}}</span>
+        全名: <span>{{fullName}}</span>
     </div>
 
 
@@ -20,7 +21,7 @@
 
         Vue.config.productionTip = false
 
-        new Vue({
+        const vm = new Vue({
             el: '#root',
             data() {
                 return {
@@ -29,7 +30,23 @@
                     firstName:'张',
                     lastName: '三'
                 }
-            }
+            },
+            // computed:{
+            //     fullName:{
+
+            //         get(){
+            //             return this.firstName + "-" + this.lastName;
+            //         }
+
+            //     }
+            // }
+
+            // 简写
+            computed:{
+                fullName(){
+                    return this.firstName + "-" + this.lastName;
+                } 
+             }
         })
     </script>
 
