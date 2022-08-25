@@ -72,9 +72,9 @@
                         console.log('isHot被修改了', newValue, oldValue)
                     }
                 },
-                // 
-                'numbers.a':{
-                    immediate:true, // 初始化时被调用
+                // 监视多级结构中所有属性的变化
+                numbers:{
+                    deep:true, // 深度监视
 
                     // handler什么时候调用 isHot发生改变时
                     handler(newValue, oldValue){
