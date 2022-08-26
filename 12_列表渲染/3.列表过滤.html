@@ -43,15 +43,16 @@
                     filPersons:[]
                 },
             watch:{
-                keyWord{
+                keyWord:{
                     immediate: true,
                     
                     handler(val){
                         this.filPersons = this.Persons.filter((p) => {
                         return p.name.indexOf(val) !== -1
-                    })
-                }
+                        })
+                    }
                     
+                }
             }
            })
     </script>
