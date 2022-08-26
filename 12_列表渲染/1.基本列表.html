@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+
+
+        <!-- 
+				v-for指令:
+						1.用于展示列表数据
+						2.语法：v-for="(item, index) in xxx" :key="yyy"
+						3.可遍历：数组、对象、字符串（用的很少）、指定次数（用的很少）
+		-->
+
+    <div id="root">
+        <h2>人员列表</h2>
+        <ul>
+            <li v-for="(p,index) in Persons" :key="index">
+                {{p.name}} - {{p.age}}
+            </li>
+        </ul>
+
+        <h2>汽车信息</h2>
+        <ul>
+            <li v-for="(p,index) of car" :key="index">
+                {{index}}   --- {{p}}
+            </li>
+        </ul>
+        
+        <h2>遍历字符串</h2>
+        <ul>
+            <li v-for="(char,index) of str" :key="index">
+                {{index}}   --- {{char}}
+            </li>
+        </ul>
+
+        <h2>遍历指定次数</h2>
+        <ul>
+            <li v-for="(char,index) of 5" :key="index">
+                {{index}}   --- {{char}}
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el: '#root',
+            data:{
+                    name: 'shake',
+                    code: 123,
+                    Persons:[
+                        {id:1,name:'张三',age : 19},
+                        {id:2,name:'李四',age : 18},
+                        {id:3,name:'王五',age : 20}
+                    ],
+                    car:{
+                        name:'奥拓',
+                        price: 20,
+                        clolr: 'blue'
+                    },
+                    str:'hello'
+                }
+           })
+    </script>
+
+
+</body>
+
+</html>
