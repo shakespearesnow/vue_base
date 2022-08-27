@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>列表过滤</title>
+    <title>列表排序</title>
     <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 
@@ -14,11 +14,15 @@
     <div id="root">
         <h2>人员列表</h2>
         <input type="text" placeholder="请输入名字" v-model="keyWord">
+        <button @click="sortType = 2">年龄升序</button>
+        <button @click="sortType = 1">年龄降序</button>
+        <button @click="sortType = 0">原顺序</button>
         <ul>
             <li v-for="(p,index) in filPersons" :key="index">
                 {{p.name}} - {{p.age}} - {{p.age}}
             </li>
         </ul>
+        
 
        
     </div>
@@ -27,34 +31,6 @@
     <script>
 
         Vue.config.productionTip = false
-        // 用watch实现
-        // const vm = new Vue({
-        //     el: '#root',
-        //     data:{
-        //             name: 'shake',
-        //             code: 123,
-        //             keyWord:'',
-        //             Persons:[
-        //                 {id:'001',name:'马冬梅',age:19,sex:'女'},
-		// 				{id:'002',name:'周冬雨',age:20,sex:'女'},
-		// 				{id:'003',name:'周杰伦',age:21,sex:'男'},
-		// 				{id:'004',name:'温兆伦',age:22,sex:'男'}
-        //             ],
-        //             filPersons:[]
-        //         },
-        //     watch:{
-        //         keyWord:{
-        //             immediate: true,
-                    
-        //             handler(val){
-        //                 this.filPersons = this.Persons.filter((p) => {
-        //                 return p.name.indexOf(val) !== -1
-        //                 })
-        //             }
-                    
-        //         }
-        //     }
-        //    })
 
         //用计算属性实现
         const vm = new Vue({
@@ -65,20 +41,34 @@
                     keyWord:'',
                     Persons:[
                         {id:'001',name:'马冬梅',age:19,sex:'女'},
-						{id:'002',name:'周冬雨',age:20,sex:'女'},
 						{id:'003',name:'周杰伦',age:21,sex:'男'},
+						{id:'002',name:'周冬雨',age:20,sex:'女'},
 						{id:'004',name:'温兆伦',age:22,sex:'男'}
-                    ]
+                    ],
+                    sortType: 0 // 0原顺序   1降序   2升序
                 },
             computed:{
+
+                // 过滤
                 filPersons(){
-                    return this.Persons.filter((p) => {
+                    const arr = this.Persons.filter((p) => {
                         return p.name.indexOf(this.keyWord) !== -1
                     })
+                    //判断是否需要排序
+                    if(this.sortType){
+                        arr.sort((a, b)=>{
+                            console.log(a);
+                            console.log(b);
+                            return this.sortType === 1 ?  b.age - a.age :a.age - b.age ;
+                        })
+                    }
+
+                    return arr;
                 }
             }
            })
 
+           
     </script>
 
 
