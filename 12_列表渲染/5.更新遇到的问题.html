@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>更新数据问题</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+
+
+     
+    <div id="root">
+        <h2>人员列表</h2>
+        <input type="text" placeholder="请输入名字" v-model="keyWord">
+
+        <button @click="update">更新马冬梅的信息</button>
+        <ul>
+            <li v-for="(p,index) in Persons" :key="p.id">
+                {{p.name}} - {{p.age}} - {{p.sex}}
+            </li>
+        </ul>
+        
+
+       
+    </div>
+
+
+    <script>
+
+        Vue.config.productionTip = false
+
+        //用计算属性实现
+        const vm = new Vue({
+            el: '#root',
+            data:{
+                    name: 'shake',
+                    code: 123,
+                    keyWord:'',
+                    Persons:[
+                        {id:'001',name:'马冬梅',age:19,sex:'女'},
+						{id:'003',name:'周杰伦',age:21,sex:'男'},
+						{id:'002',name:'周冬雨',age:20,sex:'女'},
+						{id:'004',name:'温兆伦',age:22,sex:'男'}
+                    ]
+                },
+            methods: {
+                update(){
+                 
+                    this.Persons[0].name = '马老师';
+                }
+            },
+           })
+
+           
+    </script>
+
+
+</body>
+
+</html>

@@ -18,9 +18,9 @@
         <button @click="sortType = 1">年龄降序</button>
         <button @click="sortType = 0">原顺序</button>
         <ul>
-            // 若对数据进行：逆序添加、逆序删除等破坏顺序操作, 则key不使用index
+            <!-- 若对数据进行：逆序添加、逆序删除等破坏顺序操作, 则key不使用index -->
             <li v-for="(p,index) in filPersons" :key="p.id">
-                {{p.name}} - {{p.age}} - {{p.age}}
+                {{p.name}} - {{p.age}} - {{p.sex}}
             </li>
         </ul>
         

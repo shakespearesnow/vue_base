@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>模拟一个数据监测</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        let data = {
+            name:'shake',
+            code: 123
+        }
+
+        let name = 'shake'
+
+        const obs = new Observer(data)
+
+        function Observer(obj){
+            const keys = Object.keys(obj)
+
+            keys.forEach((k) =>{
+
+                Object.defineProperty(this, k, {
+
+                    get(){
+                        return obj[k]
+                    },
+                    set(val){
+                        obj[k] = val
+                    }
+                    
+                })
+
+            })
+        }
+
+        // setInterval(() => {
+        //     if(data.name !== name ){
+        //         name = data.name;
+        //         console.log(111);
+        //     }
+        // }, 100);
+
+
+    </script>
+    
+</body>
+</html>

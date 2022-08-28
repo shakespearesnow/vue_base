@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中set的使用</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+    <style>
+        .title{
+            color: rgb(163, 18, 18);
+        }
+    </style>
+</head>
+
+<body>
+
+
+     
+    <div id="root">
+
+        <h1 class="title">学校信息</h2>
+        <h2>学校名称:{{name}}</h2>
+        <h2>学校地址:{{address}}</h2>
+        <h1 class="title">学生信息</h2>
+            <button @click="addSex"> 添加一个性别属性,默认为男 </button>
+        <h2>学生姓名:{{student.name}}</h2>
+        <h2 v-if="student.sex">学生性别:{{student.sex}}</h2>
+        <h2>学生年龄: 真实:{{student.age.realAge}} , 对外:{{student.age.spAge}}</h2>
+        <h2>朋友们:</h2>
+        <ul>
+            <li v-for="f in firends" :key="f.id">
+                姓名:{{f.name}} , 年龄: {{f.age}} 
+            </li>
+        </ul>
+
+       
+    </div>
+
+
+    <script>
+
+        Vue.config.productionTip = false
+
+        //用计算属性实现
+        const vm = new Vue({
+            el: '#root',
+            data:{
+                    name: 'shake',
+                    address:'四川',
+                    student:{
+                        name:'张三',
+                        age:{
+                            realAge: 79,
+                            spAge: 20
+                        }
+                    },
+                    code: 123,
+                    keyWord:'',
+                    firends:[
+                        {id:'001',name:'马冬梅',age:19,sex:'女'},
+						{id:'003',name:'周杰伦',age:21,sex:'男'},
+						{id:'002',name:'周冬雨',age:20,sex:'女'},
+						{id:'004',name:'温兆伦',age:22,sex:'男'}
+                    ]
+                },
+                methods: {
+                    addSex(){
+                        // 两种写法都可以
+                        
+                        // this.$set(vm.student, 'sex', '男')
+
+                        Vue.set(vm.student, 'sex', '男')
+                    }
+                },
+           })
+
+           
+    </script>
+
+
+</body>
+
+</html>
