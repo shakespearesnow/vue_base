@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+        v-pre指令：
+                1.跳过其所在节点的编译过程。
+                2.可利用它跳过：没有使用指令语法、没有使用插值语法的节点，会加快编译。
+    -->
+
+    <div id="root">
+        <h2 v-pre> 欢迎 </h2>
+        <h2 v-pre >当前的N值是:{{n}}</h2>
+        <button v-pre @click="n++">点我N++</button>
+    </div>
+
+
+    <script>
+
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: '#root',
+            data:{
+                name: 'shake',
+                code: 123,
+                n:1
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
